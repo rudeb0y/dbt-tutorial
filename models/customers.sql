@@ -8,7 +8,7 @@ with customers as (
         id as customer_id,
         first_name,
         last_name
-    from demo.raw_customers
+    from {{ ref('stg_customers') }}
 ),
 orders as (
     select
@@ -16,7 +16,7 @@ orders as (
         user_id as customer_id,
         order_date,
         status
-    from demo.raw_orders
+    from {{ ref('stg_orders') }}
 ),
 customer_orders as (
     select
