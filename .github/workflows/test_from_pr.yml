@@ -1,15 +1,15 @@
 name: Test deployment from a PR
 
-on: pull_request
+on: push
 
 env:
-  DBT_PROFILE_TARGET:            test
-  DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
+  DBT_PROFILE_TARGET:            default
+  DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_TEST_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_TEST_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_TEST_PASSWORD }}
-  DBT_PROFILE_ROLE:              CLOUD_COST_MONITORING_TEST_TRANSFORMER
-  DBT_PROFILE_DB:                CLOUD_COST_MONITORING_TEST
-  DBT_PROFILE_WH:                CLOUD_COST_MONITORING_TEST_WH
+  DBT_PROFILE_ROLE:              TRANSFORMER
+  DBT_PROFILE_DB:                DEV
+  DBT_PROFILE_WH:                TRANSFORMING
 
 jobs:
   prod:
@@ -33,4 +33,4 @@ jobs:
         export DBT_PROFILE_SCHEMA=pr_$(date +%s)
         dbt run --profiles-dir ./ci_profiles
         dbt test --profiles-dir ./ci_profiles
-    
+
