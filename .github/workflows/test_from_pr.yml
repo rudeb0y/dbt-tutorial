@@ -3,13 +3,13 @@ name: Test deployment from a PR
 on: push
 
 env:
-  DBT_PROFILE_TARGET:            default
+  DBT_PROFILE_TARGET:            test
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_TEST_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_TEST_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_TEST_PASSWORD }}
-  DBT_PROFILE_ROLE:              TRANSFORMER
-  DBT_PROFILE_DB:                DEV
-  DBT_PROFILE_WH:                TRANSFORMING
+  DBT_PROFILE_ROLE:              SYSADMIN
+  DBT_PROFILE_DB:                DBT
+  DBT_PROFILE_WH:                COMPUTE_WH
 
 jobs:
   prod:
@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install Python 3.7
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: 3.7
 
