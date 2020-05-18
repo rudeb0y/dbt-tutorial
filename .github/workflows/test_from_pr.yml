@@ -7,12 +7,12 @@ env:
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_TEST_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_TEST_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_TEST_PASSWORD }}
-  DBT_PROFILE_ROLE:              SYSADMIN
+  DBT_PROFILE_ROLE:              TRANSFORMER
   DBT_PROFILE_DB:                DBT
-  DBT_PROFILE_WH:                COMPUTE_WH
+  DBT_PROFILE_WH:                TRANSFORMING
 
 jobs:
-  prod:
+  build:
     runs-on: ubuntu-latest
 
     steps:
