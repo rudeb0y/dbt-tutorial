@@ -1,3 +1,5 @@
+![Test deployment from a PR](https://github.com/rudeb0y/dbt-tutorial/workflows/Test%20deployment%20from%20a%20PR/badge.svg)
+
 Welcome to your new dbt project!
 
 ### Using the starter project
